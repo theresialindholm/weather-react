@@ -24,16 +24,16 @@ export default function Weather() {
               <input
                 type="text"
                 placeholder="Enter city"
-                autofocus="on"
+                autoFocus="on"
                 id="search-text-input"
                 size="28"
               />
             </span>
             <a id="search-btn" href="#">
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </a>
             <a id="location-btn" href="#">
-              <i class="fas fa-location-arrow"></i>
+              <i className="fas fa-location-arrow"></i>
             </a>
           </div>
         </form>
@@ -52,7 +52,7 @@ export default function Weather() {
               </p>
               <h2 className="degree">
                 <span id="temp-now">{weatherData.temperature}</span>°
-                <a href="#" id="celsius" class="active">
+                <a href="#" id="celsius" className="active">
                   C
                 </a>
                 <span id="divider">|</span>
