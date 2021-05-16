@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+//import axios from "axios";
 //import "./Weather.css";
 
 export default function Weather() {
@@ -17,7 +17,7 @@ export default function Weather() {
     <div className="Weather">
       <div className="wrapper">
         <br />
-        <h3></h3>
+        
         <br />
         <form id="search-form">
           <div className="search">
@@ -30,12 +30,12 @@ export default function Weather() {
                 size="28"
               />
             </span>
-            <a id="search-btn" href="#">
+            <span id="search-btn" href="#">
               <i className="fas fa-search"></i>
-            </a>
-            <a id="location-btn" href="#">
+            </span>
+            <span id="location-btn" href="#">
               <i className="fas fa-location-arrow"></i>
-            </a>
+            </span>
           </div>
         </form>
 
@@ -53,13 +53,13 @@ export default function Weather() {
               </p>
               <h2 className="degree">
                 <span id="temp-now">{weatherData.temperature}</span>°
-                <a href="#" id="celsius" className="active">
+                <span href="#" id="celsius" className="active">
                   C
-                </a>
+                </span>
                 <span id="divider">|</span>
-                <a href="#" id="fahrenheit">
+                <span href="#" id="fahrenheit">
                   F
-                </a>
+                </span>
               </h2>
             </div>
           </div>
@@ -79,9 +79,9 @@ export default function Weather() {
         <div className="weather-forecast" id="forecast"></div>
       </div>
       <footer>
-        <a href="https://github.com/theresialindholm/shecodes-weather-app">
+        <span href="https://github.com/theresialindholm/shecodes-weather-app">
           Open-source code
-        </a>
+        </span>
         by Tea Lindholm
       </footer>
     </div>
