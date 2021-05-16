@@ -80,7 +80,7 @@ export default function Weather() {
       </div>
       <footer>
         <span href="https://github.com/theresialindholm/shecodes-weather-app">
-          Open-source code
+          Open-source code {" "}
         </span>
         by Tea Lindholm
       </footer>
