@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
 //import "./Weather.css";
 import axios from "axios";
 
 export default function Weather(props) {
     const [weatherData, setWeatherData] = useState({ready: false});
+    const [city, setCity] = useState (props.defaultCity);
     function handleResponse(response) {
         setWeatherData({
             ready: true,
@@ -11,12 +13,28 @@ export default function Weather(props) {
             humidity: response.data.main.humidity,
             wind: response.data.wind.speed,
             city: response.data.name,
-            date: "",
+            date: new Date(response.data.dt * 1000),
             description: response.data.weather[0].description,
             iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
 
         });
     }
+
+    function search() {
+    const apiKey = "79d26871fe6a29e52dcc85af1af380ed";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    
+    axios.get(apiUrl).then(handleResponse);
+    }
+
+function handleSubmit(event) {
+    event.preventDefault();
+    search();
+}
+
+function handleCityChange(event) {
+setCity(event.target.value);
+}
 
     if (weatherData.ready) {
           return (
@@ -25,7 +43,7 @@ export default function Weather(props) {
                 <br />
                 
                 <br />
-                <form id="search-form">
+                <form id="search-form" onSubmit={handleSubmit}>
                   <div className="search">
                     <span className="search-city">
                       <input
@@ -34,6 +52,7 @@ export default function Weather(props) {
                         autoFocus="on"
                         id="search-text-input"
                         size="28"
+                        onChange={handleCityChange}
                       />
                     </span>
                     <span id="search-btn" href="#">
@@ -44,54 +63,12 @@ export default function Weather(props) {
                     </span>
                   </div>
                 </form>
-        
-                <div className="row row-cols-auto justify-content-center">
-                  <div className="col-6 weather-info">
-                    <div className="city-date-degree">
-                      <h5 className id="current-city">
-                        {weatherData.city}
-                      </h5>
-                      <h6 className="date" id="current-date">
-                        {weatherData.date}
-                      </h6>
-                      <p className id="weather-description">
-                        {weatherData.description}
-                      </p>
-                      <h2 className="degree">
-                        <span id="temp-now">{Math.round(weatherData.temperature)}</span>°
-                        <span href="#" id="celsius" className="active">
-                          C
-                        </span>
-                        <span id="divider">|</span>
-                        <span href="#" id="fahrenheit">
-                          F
-                        </span>
-                      </h2>
-                    </div>
-                  </div>
-        
-                  <div className="col-6 weather-info icon-details">
-                    <img src={weatherData.iconUrl} alt={weatherData.description} id="icon" />
-                    <ul className="weather-details">
-                      <li>
-                        Feels like:
-                        <span id="percieved"></span>°
-                      </li>
-                      <li id="hum">Humidity:{weatherData.humidity}</li>
-                      <li id="wind-speed">Wind:{weatherData.wind}</li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="weather-forecast" id="forecast"></div>
-              </div>
+                <WeatherInfo data={weatherData} />
+            </div>
             </div>
           );
     } else {
-        const apiKey = "79d26871fe6a29e52dcc85af1af380ed";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-
-axios.get(apiUrl).then(handleResponse);
-
+search();
 return "Loading..";
     }
 

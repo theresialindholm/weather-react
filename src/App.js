@@ -6,14 +6,13 @@ function App() {
   return (
       <div className="App">
         <div className="container">
-        <Weather />
+        <Weather defaultCity="Stockholm" />
         </div>
         <footer>
           This project was coded by Tea Lindholm and is {" "}
         <a href="https://github.com/theresialindholm/shecodes-weather-app">
           open-sourced on Github {" "}
         </a>
-        by Tea Lindholm
       </footer>
     </div>
   );
