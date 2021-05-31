@@ -12,7 +12,7 @@ function App() {
           This project was coded by Tea Lindholm and is {" "}
         <a href="https://github.com/theresialindholm/shecodes-weather-app">
           open-sourced on Github {" "}
-        </a>
+        </a> and is <a href="https://admiring-gates-73238e.netlify.app/"> hosted on Netlify</a>
       </footer>
     </div>
   );
