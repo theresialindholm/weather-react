@@ -15,7 +15,7 @@ export default function WeatherInfo (props) {
         <h6 className="date" id="current-date">
           <FormattedDate date={props.data.date} />
         </h6>
-        <p className id="weather-description">
+        <p className="weather-description">
           {props.data.description}
         </p>
         <h2 className="degree">
@@ -26,7 +26,7 @@ export default function WeatherInfo (props) {
 
     <div className="col-6 weather-info icon-details">
       <div className="float-left">
-      <WeatherIcon code={props.data.icon} alt={props.data.description} />
+      <WeatherIcon code={props.data.icon} size={48} />
       </div>
       <ul className="weather-details">
         <li>
